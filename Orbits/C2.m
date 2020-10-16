@@ -1,6 +1,6 @@
 function C = C2(a, type)
 %{ 
-    C1 Rotation
+    C2 Rotation
 	Author: Marissa Palamara
     Date: 16 October 2020
 

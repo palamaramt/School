@@ -1,6 +1,6 @@
 function C = C3(a, type)
 %{ 
-    C1 Rotation
+    C3 Rotation
 	Author: Marissa Palamara
     Date: 16 October 2020
 
