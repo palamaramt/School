@@ -1,4 +1,4 @@
-function [Q] = C313(phi,theta,psi,type)
+function [Q] = C313(psi,theta,phi,type)
 %{ 
     Classical Euler Angle Rotation - 313
 	Author: Marissa Palamara
@@ -9,7 +9,6 @@ function [Q] = C313(phi,theta,psi,type)
         theta (double) - nutation angle in deg or rads
         psi (double) - spin angle in deg or rads
         tpye (str) - specify degrees or radians
-
     Returns:
         Q (double) (3x3 matrix): Direct Cosine Matrix
 
