@@ -10,6 +10,9 @@ function [Q] = C313(phi,theta,psi,type)
         psi (double) - spin angle in deg or rads
         tpye (str) - specify degrees or radians
 
+    Returns:
+        Q (double) (3x3 matrix): Direct Cosine Matrix
+
     Ex:
         Q = C313(5,10,15,'deg')
 %}
