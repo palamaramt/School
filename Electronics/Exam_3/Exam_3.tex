@@ -1,13 +1,146 @@
-\documentclass{article}
-\usepackage[margin = 0.1in,landscape]{geometry}
+\documentclass[9 pt]{article}
+\usepackage[margin = 0.15in,landscape]{geometry}
 \usepackage{multicol}
-
+\usepackage[americanports]{circuitikz}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
 
 \usepackage{kantlipsum}
 
 
 \begin{document}
 
-\kant[1-7]
+\tikzstyle{branch} = [fill,shape=circle,minimum size=3pt, inner sep=0pt]
 
+\begin{multicols*}{3}
+%\def\arraystretch{0.85}
+\setlength{\tabcolsep}{0.15cm}
+
+\section{Logic}
+	\vspace{0.25cm}
+	\begin{tabular}{|c|c|c|}
+		\hline
+		Gate & Truth Table & Boolean Logic\\
+		\hline
+
+		% ----- not -----
+		\tikz \draw (0,0) node[not port, scale = 0.5] {};
+		&
+		\begin{tabular}{l|l}
+			in & out \\
+			\hline
+			0 & 1\\
+			1 & 0		
+		\end{tabular}
+		&
+		$Y=\overline{A}$
+		\\
+		\hline
+
+		% ----- and -----
+		\tikz \draw (0,0) node[and port, scale = 0.5] {};
+		&
+		\begin{tabular}{ll|l}
+			A & B & out \\
+			\hline
+			0 & 0 & 0\\
+			0 & 1 & 0\\
+			1 & 0 & 0\\
+			1 & 1 & 1
+		\end{tabular}
+		&
+		$Y=AB$
+		\\
+		\hline
+
+		% ----- nand -----
+		\tikz \draw (0,0) node[nand port, scale = 0.5] {};
+		&
+		\begin{tabular}{ll|l}
+			A & B & out \\
+			\hline
+			0 & 0 & 1\\
+			0 & 1 & 1\\
+			1 & 0 & 1\\
+			1 & 1 & 0
+		\end{tabular}
+		&
+		$Y=\overline{AB}$
+		\\
+		\hline
+
+		% ----- or -----
+		\tikz \draw (0,0) node[or port, scale = 0.5] {};
+		&
+		\begin{tabular}{ll|l}
+			A & B & out \\
+			\hline
+			0 & 0 & 0\\
+			0 & 1 & 1\\
+			1 & 0 & 1\\
+			1 & 1 & 1
+		\end{tabular}
+		&
+		$Y= A + B$
+		\\
+		\hline
+		% ----- nor -----
+		\tikz \draw (0,0) node[nor port, scale = 0.5] {};
+		&
+		\begin{tabular}{ll|l}
+			A & B & out \\
+			\hline
+			0 & 0 & 1\\
+			0 & 1 & 0\\
+			1 & 0 & 0\\
+			1 & 1 & 0
+		\end{tabular}
+		&
+		$Y=\overline{A+B}$
+		\\
+		\hline
+
+		% ----- xor -----
+		\tikz \draw (0,0) node[xor port, scale = 0.5] {};
+		&
+		\begin{tabular}{ll|l}
+			A & B & out \\
+			\hline
+			0 & 0 & 0\\
+			0 & 1 & 1\\
+			1 & 0 & 1\\
+			1 & 1 & 0
+		\end{tabular}
+		&
+		$Y=A \oplus B$
+		\\
+		\hline
+		% ----- xnor -----
+		\tikz \draw (0,0) node[xnor port, scale = 0.5] {};
+		&
+		\begin{tabular}{ll|l}
+			A & B & out \\
+			\hline
+			0 & 0 & 1\\
+			0 & 1 & 0\\
+			1 & 0 & 0\\
+			1 & 1 & 1
+		\end{tabular}
+		&
+		$Y= \overline{A \oplus B}$
+		\\
+		\hline
+\end{tabular}
+\vspace{1 cm}
+
+\begin{tabular}{|c|c|}
+\hline
+Commutative Rules & Associative Rules \\
+\hline
+$A \dot B = B \dot A$ & $(A\dot B)\dot C = A \dot (B \dot C)$
+
+\end{tabular}
+
+\end{multicols*}
 \end{document}
