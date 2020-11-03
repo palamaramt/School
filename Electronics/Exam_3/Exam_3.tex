@@ -5,7 +5,7 @@
 \usepackage{array}
 \usepackage{amsmath}
 \usepackage{amssymb}
-
+\usepackage{lmodern}
 \usepackage{kantlipsum}
 
 \setlength\parindent{0pt}
@@ -211,11 +211,80 @@ $\overline{A+B+C} = \overline{A} \cdot \overline{B} \cdot \overline{C}$
 	\item $\overline{A\oplus B}=AB+\overline{A}\cdot \overline{B}$
 \end{enumerate}
 
-\begin{tabular}{|c|c|c|}
+\begin{tabular}[c]{|c|c|c|}
 	\hline
 	Logic Gate & NAND Eq. & NOR Eq. \\
 	\hline
+	% ----- not ----- %
 	\tikz \draw (0,0) node[not port, scale = 0.5] {};
+	&
+	\begin{circuitikz}
+		\ctikzset{logic ports origin =center}
+		\draw (0.65,0) node[nand port,scale = 0.5] (nandnot) {}
+			(nandnot.in 1) node[anchor=east] {}
+			(nandnot.in 2) node[anchor=east] {}
+			(nandnot.out) node[anchor=west] [font=\fontsize{7}{0}\selectfont] {$\overline{AA}=\overline{A}$}
+			(0,0) -| (nandnot.in 1)
+			(0,0) -| (nandnot.in 2)
+			(0.25,0) node[circ]{}
+			(-0.1,0) node [font=\fontsize{7}{0}\selectfont] {A}
+	;\end{circuitikz}
+	&
+	\begin{circuitikz}
+		\ctikzset{logic ports origin =center}
+		\draw (0.65,0) node[nor port,scale = 0.5] (nornot) {}
+			(nornot.in 1) node[anchor=east] {}
+			(nornot.in 2) node[anchor=east] {}
+			(nornot.out) node[anchor=west] [font=\fontsize{7}{0}\selectfont] {$\overline{A+A}=\overline{A}$}
+			(0,0) -| (nornot.in 1)
+			(0,0) -| (nornot.in 2)
+			(0.25,0) node[circ]{}
+			(-0.1,0) node [font=\fontsize{7}{0}\selectfont] {A}
+	;\end{circuitikz}\\
+	\hline
+	% ----- and ----- %
+	\tikz \draw (0,0) node[and port, scale = 0.5] {};
+	&
+	\begin{circuitikz}
+		\ctikzset{logic ports origin = center}
+		\draw (0,0) node[nand port, scale = 0.5] (nand1) {}
+		(nand1.in 1) node[anchor = east] [font=\fontsize{7}{0}\selectfont] {A}
+		(nand1.in 2) node[anchor = east] [font=\fontsize{7}{0}\selectfont] {B}
+		(nand1.out) node[anchor = west, above] [font=\fontsize{6}{0}\selectfont] {$\overline{AB}$}
+		(nand1.out) -- ++(0.25,0) node[circ] (con) {}
+		(con) ++(0.4,0) node[nand port, scale = 0.5, anchor = center] (nand2) {}
+		(nand2.in 1) node[anchor = east] {}
+		(nand2.in 2) node[anchor = east] {}
+		(con) -| (nand2.in 1)
+		(con) -| (nand2.in 2)
+	;\end{circuitikz}
+	&
+	\begin{circuitikz}
+	\ctikzset{logic ports origin =center}
+		\draw (0.65,0) node[nor port,scale = 0.5] (nor1) {}
+			(nor1.in 1) node[anchor=east] {}
+			(nor1.in 2) node[anchor=east] {}
+			(nor1.out) node[anchor=east, above] [font=\fontsize{7}{0}\selectfont] {$\overline{A}$}
+			(0,0) -| (nor1.in 1)
+			(0,0) -| (nor1.in 2)
+			(0.25,0) node[circ]{}
+			(-0.1,0) node [font=\fontsize{7}{0}\selectfont] {A}
+
+			(0.65,-1) node[nor port,scale = 0.5] (nor2) {}
+			(nor2.in 1) node[anchor=east] {}
+			(nor2.in 2) node[anchor=east] {}
+			(nor2.out) node[anchor=east, above] [font=\fontsize{7}{0}\selectfont] {$\overline{B}$}
+			(0,-1) -| (nor2.in 1)
+			(0,-1) -| (nor2.in 2)
+			(0.25,-1) node[circ]{}
+			(-0.1,-1) node [font=\fontsize{7}{0}\selectfont] {B}
+
+			(nor1.out) -| ++(0.5,-0.36) node[nor port, scale = 0.5, anchor = in 1] (nor3) {}
+			(nor3.in 2) node[anchor=east] {}
+			(nor3.out) node[anchor=west] [font=\fontsize{7}{0}\selectfont] {$AB$}
+			(nor2.out) -| (nor3.in 2)
+	;\end{circuitikz}\\
+	\hline
 \end{tabular}
 
 
