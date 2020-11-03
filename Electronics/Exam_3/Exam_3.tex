@@ -8,139 +8,216 @@
 
 \usepackage{kantlipsum}
 
+\setlength\parindent{0pt}
+\renewcommand{\baselinestretch}{0.5}
+
 
 \begin{document}
 
 \tikzstyle{branch} = [fill,shape=circle,minimum size=3pt, inner sep=0pt]
 
-\begin{multicols*}{3}
+\begin{multicols*}{4}
 %\def\arraystretch{0.85}
 \setlength{\tabcolsep}{0.15cm}
 
-\section{Logic}
-	\vspace{0.25cm}
-	\begin{tabular}{|c|c|c|}
-		\hline
-		Gate & Truth Table & Boolean Logic\\
-		\hline
 
-		% ----- not -----
-		\tikz \draw (0,0) node[not port, scale = 0.5] {};
-		&
-		\begin{tabular}{l|l}
-			in & out \\
-			\hline
-			0 & 1\\
-			1 & 0		
-		\end{tabular}
-		&
-		$Y=\overline{A}$
-		\\
-		\hline
 
-		% ----- and -----
-		\tikz \draw (0,0) node[and port, scale = 0.5] {};
-		&
-		\begin{tabular}{ll|l}
-			A & B & out \\
-			\hline
-			0 & 0 & 0\\
-			0 & 1 & 0\\
-			1 & 0 & 0\\
-			1 & 1 & 1
-		\end{tabular}
-		&
-		$Y=AB$
-		\\
-		\hline
 
-		% ----- nand -----
-		\tikz \draw (0,0) node[nand port, scale = 0.5] {};
-		&
-		\begin{tabular}{ll|l}
-			A & B & out \\
-			\hline
-			0 & 0 & 1\\
-			0 & 1 & 1\\
-			1 & 0 & 1\\
-			1 & 1 & 0
-		\end{tabular}
-		&
-		$Y=\overline{AB}$
-		\\
-		\hline
+% ---------- Logic Gates ---------- %
+\subsection*{Logic Gates}
+\vspace{0.25cm}
+\begin{tabular}{|c|c|c|c|}
+	\hline
+	Type &Gate & Truth Table & Boolean Logic\\
+	\hline
 
-		% ----- or -----
-		\tikz \draw (0,0) node[or port, scale = 0.5] {};
-		&
-		\begin{tabular}{ll|l}
-			A & B & out \\
-			\hline
-			0 & 0 & 0\\
-			0 & 1 & 1\\
-			1 & 0 & 1\\
-			1 & 1 & 1
-		\end{tabular}
-		&
-		$Y= A + B$
-		\\
+	% ----- not ----- %
+	not &
+	\tikz \draw (0,0) node[not port, scale = 0.5] {};
+	&
+	\begin{tabular}{l|l}
+		in & out \\
 		\hline
-		% ----- nor -----
-		\tikz \draw (0,0) node[nor port, scale = 0.5] {};
-		&
-		\begin{tabular}{ll|l}
-			A & B & out \\
-			\hline
-			0 & 0 & 1\\
-			0 & 1 & 0\\
-			1 & 0 & 0\\
-			1 & 1 & 0
-		\end{tabular}
-		&
-		$Y=\overline{A+B}$
-		\\
-		\hline
+		0 & 1\\
+		1 & 0		
+	\end{tabular}
+	&
+	$Y=\overline{A}$
+	\\
+	\hline
 
-		% ----- xor -----
-		\tikz \draw (0,0) node[xor port, scale = 0.5] {};
-		&
-		\begin{tabular}{ll|l}
-			A & B & out \\
-			\hline
-			0 & 0 & 0\\
-			0 & 1 & 1\\
-			1 & 0 & 1\\
-			1 & 1 & 0
-		\end{tabular}
-		&
-		$Y=A \oplus B$
-		\\
+	% ----- and ----- %
+	and &
+	\tikz \draw (0,0) node[and port, scale = 0.5] {};
+	&
+	\begin{tabular}{ll|l}
+		A & B & out \\
 		\hline
-		% ----- xnor -----
-		\tikz \draw (0,0) node[xnor port, scale = 0.5] {};
-		&
-		\begin{tabular}{ll|l}
-			A & B & out \\
-			\hline
-			0 & 0 & 1\\
-			0 & 1 & 0\\
-			1 & 0 & 0\\
-			1 & 1 & 1
-		\end{tabular}
-		&
-		$Y= \overline{A \oplus B}$
-		\\
+		0 & 0 & 0\\
+		0 & 1 & 0\\
+		1 & 0 & 0\\
+		1 & 1 & 1
+	\end{tabular}
+	&
+	$Y=AB$
+	\\
+	\hline
+
+	% ----- nand ----- %
+	nand &
+	\tikz \draw (0,0) node[nand port, scale = 0.5] {};
+	&
+	\begin{tabular}{ll|l}
+		A & B & out \\
 		\hline
+		0 & 0 & 1\\
+		0 & 1 & 1\\
+		1 & 0 & 1\\
+		1 & 1 & 0
+	\end{tabular}
+	&
+	$Y=\overline{AB}$
+	\\
+	\hline
+
+	% ----- or ----- %
+	or &
+	\tikz \draw (0,0) node[or port, scale = 0.5] {};
+	&
+	\begin{tabular}{ll|l}
+		A & B & out \\
+		\hline
+		0 & 0 & 0\\
+		0 & 1 & 1\\
+		1 & 0 & 1\\
+		1 & 1 & 1
+	\end{tabular}
+	&
+	$Y= A + B$
+	\\
+	\hline
+	% ----- nor ----- %
+	nor &
+	\tikz \draw (0,0) node[nor port, scale = 0.5] {};
+	&
+	\begin{tabular}{ll|l}
+		A & B & out \\
+		\hline
+		0 & 0 & 1\\
+		0 & 1 & 0\\
+		1 & 0 & 0\\
+		1 & 1 & 0
+	\end{tabular}
+	&
+	$Y=\overline{A+B}$
+	\\
+	\hline
+
+	% ----- xor ----- %
+	xor &
+	\tikz \draw (0,0) node[xor port, scale = 0.5] {};
+	&
+	\begin{tabular}{ll|l}
+		A & B & out \\
+		\hline
+		0 & 0 & 0\\
+		0 & 1 & 1\\
+		1 & 0 & 1\\
+		1 & 1 & 0
+	\end{tabular}
+	&
+	$Y=A \oplus B$
+	\\
+	\hline
+	% ----- xnor ----- %
+	xnor &
+	\tikz \draw (0,0) node[xnor port, scale = 0.5] {};
+	&
+	\begin{tabular}{ll|l}
+		A & B & out \\
+		\hline
+		0 & 0 & 1\\
+		0 & 1 & 0\\
+		1 & 0 & 0\\
+		1 & 1 & 1
+	\end{tabular}
+	&
+	$Y= \overline{A \oplus B}$
+	\\
+	\hline
 \end{tabular}
-\vspace{1 cm}
+\vspace{0.25 cm}
 
-\begin{tabular}{|c|c|}
+% ---------- Boolean Math ---------- %
+\subsection*{Boolean Math}
+\begin{tabular}{|c|}
 \hline
-Commutative Rules & Associative Rules \\
+\textbf{Commutative Rules}  \\
 \hline
-$A \dot B = B \dot A$ & $(A\dot B)\dot C = A \dot (B \dot C)$
+$A \cdot B = B \cdot A$ \\
+$A + B = B + A$  \\
+\hline
+\textbf{Associative Rules} \\
+\hline
+$(A\cdot B)\cdot C = A \cdot (B \cdot C)$ \\
+$(A+B)+C = A+(B+C)$ \\
+\hline
 
+\textbf{Distributive Rules} \\
+\hline
+$A \cdot (B+C) = A \cdot B + A \cdot C$ \\
+$(A+B) \cdot (A+C) = A + (B\cdot C)$ \\ 
+\hline
+\textbf{Absorption Rules} \\
+\hline
+$A \cdot (A+B) = A$\\
+$A+(A \cdot B) = A$\\
+\hline
 \end{tabular}
+
+% ---------- De Morgan's Theorem ---------- %
+\subsection*{De Morgan's Theorem}
+$\overline{A\cdot B} = \overline{A} + \overline{B}$ \par
+$\overline{A \cdot B \cdot C} = \overline{A} + \overline{B} + \overline{C}$ \par
+$\overline{A+B} = \overline{A} \cdot \overline{B}$\par
+$\overline{A+B+C} = \overline{A} \cdot \overline{B} \cdot \overline{C}$
+
+\vspace{1cm}
+% ---------- Logic Identities ---------- %
+\subsection*{Logic Identities}
+\begin{enumerate}
+	\itemsep0em
+	\item $A+B=B+A$
+	\item $AB=BA$
+	\item $A+(B+C)=(A+B)+C$
+	\item $A(BC)=(AB)C$
+	\item $A(B+C)=AB+AC$
+	\item $(A+B)(C+D)=AC+AD+BC+BD$
+	\item $\overline{1}=0$
+	\item $\overline{0}=1$
+	\item $A\cdot 0 = 0$
+	\item $A \cdot 1 = A$
+	\item $ A+0=A$
+	\item $A+1=1$
+	\item $A+A=A$
+	\item $AA=A$
+	\item $\overline{\overline{A}}=A$
+	\item $A+\overline{A} =1$
+	\item $A\overline{A}=0$
+	\item $\overline{A+B}=\overline{A}\cdot \overline{B}$
+	\item $\overline{A\cdot B}=\overline{A}+\overline{B}$
+	\item $A+\overline{A}B=A+B$
+	\item $A \oplus B = \overline{A}B+A\overline{B} = (A+B)(\overline{AB})$
+	\item $\overline{A\oplus B}=AB+\overline{A}\cdot \overline{B}$
+\end{enumerate}
+
+\begin{tabular}{|c|c|c|}
+	\hline
+	Logic Gate & NAND Eq. & NOR Eq. \\
+	\hline
+	\tikz \draw (0,0) node[not port, scale = 0.5] {};
+\end{tabular}
+
 
 \end{multicols*}
 \end{document}
