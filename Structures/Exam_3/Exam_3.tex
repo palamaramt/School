@@ -121,6 +121,66 @@
     $v\left(\frac{L}{2}\right) = \frac{49p_0L^4}{3840EI}$\par 
     Then do the same thing for $\phi$
 
+    % ----- Direct Stiffness 1 ----- %
+    \subsection*{The Direct Stiffness Method 1}\par 
+    \includegraphics[width=\linewidth]{Figures/DSM1_Example.png}
+
+    \begin{equation*}
+        \textbf{f} = 
+        \begin{bmatrix}
+            f_{x1}\\
+            f_{y1}\\
+            f_{x2}\\
+            f_{y2}\\
+            f_{x3}\\
+            f_{y3}
+        \end{bmatrix}
+        \quad
+        \textbf{u} = 
+        \begin{bmatrix}
+            u_{x1}\\
+            u_{y1}\\
+            u_{x2}\\
+            u_{y2}\\
+            u_{x3}\\
+            u_{y3}
+        \end{bmatrix}
+    \end{equation*}
+
+    \textbf{Master Stiffness Equations}\par 
+    The master stiffness equations relate the joint forces \textbf{f} of the
+    complete structure to the joint displacements \textbf{u} of the complete
+    structure before specification of support conditions.
+
+    \begin{equation*} 
+        \begin{bmatrix}
+            f_{x1}\\
+            f_{y1}\\
+            f_{x2}\\
+            f_{y2}\\
+            f_{x3}\\
+            f_{y3}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            K_{x1x1} & K_{x1y1} & K_{x1x2} & K_{x1y2} & K_{x1x3} & K_{x1y3}\\
+            K_{y1x1} & K_{y1y1} & K_{y1x2} & K_{y1y2} & K_{y1x3} & K_{y1y3}\\
+            K_{x2x1} & K_{x2y1} & K_{x2x2} & K_{x2y2} & K_{x2x3} & K_{x2y3}\\
+            K_{y2x1} & K_{y2y1} & K_{y2x2} & K_{y2y2} & K_{y2x3} & K_{y2y3}\\
+            K_{x3x1} & K_{x3y1} & K_{x3x2} & K_{x3y2} & K_{x3x3} & K_{x3y3}\\
+            K_{y3x1} & K_{y3y1} & K_{y3x2} & K_{y3y2} & K_{y3x3} & K_{y3y3}
+        \end{bmatrix}
+        \begin{bmatrix}
+            u_{x1}\\
+            u_{y1}\\
+            u_{x2}\\
+            u_{y2}\\
+            u_{x3}\\
+            u_{y3}
+        \end{bmatrix} 
+    \end{equation*}
+
+    \center{\textbf{f = Ku}}    
 
 
 \end{multicols*}  
