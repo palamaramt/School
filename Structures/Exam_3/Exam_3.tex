@@ -21,7 +21,7 @@
     % ----- Virtual Force ----- %
     \subsection*{Virtual Force}
     $\delta W_e^*+\delta W_i^*=0$\par 
-    \includegraphics[width=0.666\linewidth]{Figures/Virtual_Force_Springs.png}
+    \includegraphics[width=0.666\linewidth]{Figures/Virtual_Force_Springs.png}\par
     $\delta W_e^* = u_A^{sphere} \delta P \rightarrow \delta F_{int}=\delta P$\par 
     $\delta W_e^* = -u_A^{spring} \delta F_{int}$\par 
     $\left(u_A^{sphere}-u_A^{spring}\right)\delta P=0$\par 
@@ -39,7 +39,8 @@
     Replace $\delta P$ with 1, $\bar{1}u=\sum\limits_N \bar{f}_{int}\Delta$
 
     % ----- Truss Example ----- %
-    \textbf{Truss Example}\par 
+    \textbf{Truss Example}
+    
     \includegraphics[width=0.5\linewidth]{Figures/Truss_Example_VF.png}
 
     $\delta W_{ie,bar}^*=\int_L \varepsilon \bar{\sigma} A dx\rightarrow 
@@ -95,8 +96,31 @@
     From here follow same procedure as previous.
 
     % ----- Beam Example ----- %
-    \textbf{Beam Example}
-  
+    \textbf{Beam Example}\par 
+    \includegraphics[width=0.5\linewidth]{Figures/Beam_Eample_VF.png}\par 
+    First compute internal virtual work of the beam by virtual stress due to a unit dummy load.\par 
+    $\delta W_{ie,beam}^*=\int \int \int_V \varepsilon\bar{\sigma}dxdydz$\par 
+    Use Hook's Law: $\delta W_{ie,beam}^*=\int \int \int_V \frac{\sigma}{E}\bar{\sigma}dxdydz$\par 
+    Recall: $\sigma = -\frac{M}{I}y$\par 
+    Finally:\par 
+    $\delta W_{ie,beam}^* = \int_L \frac{M\bar{m}}{EI}dx$ where $\bar{m}$ is
+    virtual bending moment due to unit dummy load.
+
+    \includegraphics[width=\linewidth]{Figures/Beam_Eample_VF_2.png}\par 
+    \textbf{Step 1:} Compute the bending moment due to the real force.\par 
+    $M = \frac{p_0 x^3}{6L}$\par 
+    \textbf{Step 2:} Compute bending moments due to unit dummy foce and unit
+    dummy moment.\par 
+    $\bar{m}^v=0$ for $0 \le x < \frac{L}{2}$ and $\bar{m}^v = x - \frac{L}{2}$
+    for $\frac{L}{2} \le x \le L$\par 
+    $\bar{m}^\phi = 0$ for $0 \le x < \frac{L}{2}$ and $\bar{m}^\phi = -1$
+    for $\frac{L}{2} \le x \le L$\par
+    \textbf{Step 3:} To compute the displacement and the rotation in the middle
+    of the beam, compute the internal work due to the two dummy load cases.\par 
+    $v\left(x=\frac{L}{2}\right) = \int_L \frac{M\bar{m}^v}{EI}dx=\int_{l/2}^L \frac{(x-\frac{L}{2})p_0x^3}{6EIL}dx$\par 
+    $v\left(\frac{L}{2}\right) = \frac{49p_0L^4}{3840EI}$\par 
+    Then do the same thing for $\phi$
+
 
 
 \end{multicols*}  
