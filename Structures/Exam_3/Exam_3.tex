@@ -284,5 +284,45 @@
         \end{bmatrix}
     \end{equation*}
 
+    \textbf{Merging it All}\par 
+    \begin{enumerate}
+        \item \textit{Compatibility of displacement:} The displacements of all 
+                members that meet are a joint are the same.\par
+                $u_{x3}^{(2)} = u_{x3}^{(3)}$, $u_{y3}^{(2)} = u_{y3}^{(3)}$
+        \item \textit{Force equilibrium:} The sum of internal forces exerted by 
+                all members that meet at a joint balances the external force 
+                applied to that joint.\par 
+                $f_{x3} = f_{x3}^{(2)}+f_{x3}^{(3)}=f_{x3}^{(1)}+f_{x3}^{(2)}+f_{x3}^{(3)}$, 
+                $f_{y3} = f_{y3}^{(2)}+f_{y3}^{(3)}=f_{y3}^{(1)}+f_{y3}^{(2)}+f_{y3}^{(3)}$\par
+                The addition of $f_{x3}^{(1)}$ does nothing because member 1 is
+                not connected to joint 3.
+    \end{enumerate}
+
+    Finally, \par 
+    $\textbf{f} = \textbf{f}^{(1)}+\textbf{f}^{(2)}+\textbf{f}^{(3)}=\left(\textbf{K}^{(1)}+\textbf{K}^{(2)}+\textbf{K}^{(3)}\right)\textbf{u} = \textbf{Ku}$
+
+    \textbf{Solution}
+
+    The best way to account for support conditions is to remove equations that
+    are associated with known zero joint displacements from the master system.
+    This should result in a system of equations that is solveable for the displacements
+    left because the forces at those displacements should be known.
+
+    \textbf{Post Processing}
+
+    Recovering Reaction Forces:\par 
+    Multiply complete displacement solution found above by \textbf{K}.\par 
+    Recovery of Internal Forces \& stresses:\par 
+    The average axial stress $\sigma^e$ is found by dividing $F^e$ by $A^e$.\par 
+    The axial force $F^e$ in member $e$ can be found by:\par 
+    \begin{equation*}
+        d^e=\bar{u}_{xj}^e-\bar{u}_{xi}^e
+        \quad
+        F^e=\frac{E^eA^e}{L^e}d^e
+    \end{equation*}
+
+
+
+
 \end{multicols*}  
 \end{document}
