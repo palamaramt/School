@@ -121,8 +121,8 @@
     $v\left(\frac{L}{2}\right) = \frac{49p_0L^4}{3840EI}$\par 
     Then do the same thing for $\phi$
 
-    % ----- Direct Stiffness 1 ----- %
-    \subsection*{The Direct Stiffness Method 1}\par 
+    % ----- Direct Stiffness Method ----- %
+    \subsection*{The Direct Stiffness Method}\par 
     \includegraphics[width=\linewidth]{Figures/DSM1_Example.png}
 
     \begin{equation*}
@@ -180,8 +180,109 @@
         \end{bmatrix} 
     \end{equation*}
 
-    \center{\textbf{f = Ku}}    
+    \begin{center}
+        \textbf{f = Ku}
+    \end{center}
+     
+    Where \textbf{K} is the master stiffness matrix or the global stiffness matrix.
 
+    \textbf{Breakdown Stage}\par 
+    \includegraphics[width=\linewidth]{Figures/breakdown_stage.png}
+
+    Begin by discarding all loads and supports (boundary conditions). Then disconnect
+    and disassemble into components. The local coordinate system is $\{ \bar{x},\bar{y}\}$\par 
+    \begin{equation*}
+        \begin{bmatrix}
+            \bar{f}_{xi}\\
+            \bar{f}_{yi}\\
+            \bar{f}_{xj}\\
+            \bar{f}_{yj}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            \bar{K}_{xixi} & \bar{K}_{xiyi} & \bar{K}_{xixj} & \bar{K}_{xiyj}\\
+            \bar{K}_{yixi} & \bar{K}_{yiyi} & \bar{K}_{yixj} & \bar{K}_{yiyj}\\
+            \bar{K}_{xjxi} & \bar{K}_{xjyi} & \bar{K}_{xjxj} & \bar{K}_{xjyj}\\
+            \bar{K}_{yjxj} & \bar{K}_{yjyi} & \bar{K}_{yjxj} & \bar{K}_{yjyj}
+        \end{bmatrix}
+        \begin{bmatrix}
+            \bar{u}_{xi}\\
+            \bar{u}_{yi}\\
+            \bar{u}_{xj}\\
+            \bar{u}_{yj}
+        \end{bmatrix}
+    \end{equation*}
+
+    If membe properties are uniform along its length, $k_s=\frac{EA}{L}$ and,
+    consequently, the force-displacement equation is $F=k_sd=\frac{EAd}{l}$ 
+    where $F$ is the internal axial force and $d$ is the relative axial displacement,
+    which is physically the bar elongation.\par 
+    \begin{equation*}
+        \bar{\textbf{K}}=\frac{EA}{L}
+        \begin{bmatrix}
+            1 & 0 & -1 & 0\\
+            0 & 0 & 0 & 0 \\
+            -1 & 0 & 1 & 0\\
+            0 & 0 & 0 & 0
+        \end{bmatrix}
+    \end{equation*}
+
+    \includegraphics[width=\linewidth]{Figures/DSM1_phi.png}
+    
+    $c = \cos{\phi}$ and $s = \sin{\phi}$ where $\phi$ is the angle formed by
+    $\bar{x}$ and $x$, measured CCW from $x$.\par 
+    \begin{equation*}
+        \begin{bmatrix}
+            \bar{u}_{xi}\\
+            \bar{u}_{yi}\\
+            \bar{u}_{xj}\\
+            \bar{u}_{xy}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            c & s & 0 & 0\\
+            -s & c & 0 & 0\\
+            0 & 0 & c & s\\
+            0 & 0 & -s & c
+        \end{bmatrix}
+        \begin{bmatrix}
+            u_{xi}\\
+            u_{yi}\\
+            u_{xj}\\
+            u_{yj}
+        \end{bmatrix}
+        \quad
+        \begin{bmatrix}
+            f_{xi}\\
+            f_{yi}\\
+            f_{xj}\\
+            f_{yj}
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            c & -s & 0 & 0\\
+            s & c & 0 & 0\\
+            0 & 0 & c & -s\\
+            0 & 0 & s & c
+        \end{bmatrix}
+        \begin{bmatrix}
+            \bar{f}_{xi}\\
+            \bar{f}_{yi}\\
+            \bar{f}_{xj}\\
+            \bar{f}_{yj}
+        \end{bmatrix}
+    \end{equation*}
+
+    \textbf{Global Member Stiffness Equations}\par 
+    \begin{equation*}
+        \textbf{K}^e = \frac{E^eA^e}{L^e}
+        \begin{bmatrix}
+            c^2 & sc & -c^2 & -sc\\
+            sc & s^2 & -sc & -s^2\\
+            -c^2 & -sc & c^2 & sc\\
+            -sc & -s^2 & sc & s^2
+        \end{bmatrix}
+    \end{equation*}
 
 \end{multicols*}  
 \end{document}
