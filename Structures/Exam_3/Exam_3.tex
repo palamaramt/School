@@ -321,7 +321,46 @@
         F^e=\frac{E^eA^e}{L^e}d^e
     \end{equation*}
 
+    % ----- FEM of Beam ----- %
+    \subsection*{FEM Analysis of Plane Beam Structure}
 
+    \begin{center}
+    \includegraphics[width=0.75\linewidth]{Figures/FEM_plane_beam.png}\par 
+    Beam finite elements are obtained by subdividing beam members longitudinally.
+    \begin{equation*}
+        \textbf{u}^{(e)} = 
+        \begin{bmatrix}
+            v_i^{(e)}\\
+            \theta_i^{(e)}\\
+            v_j^{(e)}\\
+            \theta_j^{(e)}
+        \end{bmatrix},
+        \quad
+        \textbf{f}^{(e)} = 
+        \begin{bmatrix}
+            f_i^{(e)}\\
+            m_i^{(e)}\\
+            f_j^{(e)}\\
+            m_j^{(e)}
+        \end{bmatrix}
+    \end{equation*}
+
+    \includegraphics[width=0.5\linewidth]{Figures/FEM_plane_beam_2.png}
+    \end{center}
+
+    This beam can be solved like the truss from here on out. See CH 19 page 3 
+    for more detailed steps.
+
+    \textbf{Analytical Solution by Discontinuity Functions}
+    \begin{equation*}
+        \langle x-a \rangle ^n = \left{ 
+            \begin{array}{lll}
+            (x-a)^n & \text{if} & x>a\\
+            0 & \text{if} & x \le a
+        \end{array}
+        \right.
+    \end{equation*}
+    
 
 
 \end{multicols*}  
