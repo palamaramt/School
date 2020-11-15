@@ -7,6 +7,7 @@
 \usepackage{lmodern}
 \usepackage{graphicx}
 \usepackage{enumitem}
+\usepackage{wasysym}
 \setlength\parindent{0pt}
 \renewcommand{\baselinestretch}{0.75}
 
@@ -298,9 +299,155 @@
     % ----- Coordinate Frames ----- %
     \subsection*{Coordinate Frames}
     \textbf{Ecliptic Plane:}\par 
-    
+    \includegraphics[width=0.5\linewidth]{Figures/ecliptic_plane.png}
+    \begin{itemize}
+        \item Mean plane of the Earth's orbit around the Sun.
+        \item Earth's equatorial plane is inclined about 23.5$^\circ$ relative to ecliptic.
+        \item Vernal Equinox $\vernal$: 
+            \begin{itemize}
+                \item intersection of Sun's path relative to the Earth with the equatorial plane, as Sun moves from South to North.
+                \item Occurs at ascending node of the Sun as viewed from Earth
+                \item Used as reference direction for defining intertial reference frames
+            \end{itemize}
+    \end{itemize}
 
+    \textbf{ICRF: International Celestial Reference Frame}\par 
+    \begin{itemize}
+        \item Close representation of intertial frame (rotates a little)
+        \item Nonrotating with respect to extragalactic radio sources (quasars)
+        \item Center: Barycenter of the Solar System
+    \end{itemize}
 
+    \textbf{Earth-Centered Mean Equatorial J2000 System (EME2000):}
+    \begin{itemize}
+        \item Origin: Earth Center
+        \item $\hat{X}$: Vernal Equinox at 1/1/2000 12:00:00 TT
+        \item $\hat{Z}$: Normal to the mean equatorial plane of Earth at the J2000 epoch (Spin axis of Earth)
+        \item $\hat{Y}$: Completes right hand coordinate frame
+    \end{itemize}
+
+    \textbf{Earth-Centered Mean Orbit and Equinox of J2000 (EMO2000):}
+    \begin{itemize}
+        \item Origin: Earth Center
+        \item $\hat{X}$: Vernal Equinox at 1/1/2000 12:00:00 TT
+        \item $\hat{Z}$: Orbit normal vector at same time
+        \item $\hat{Y}$: Completes right hand coordinate frame
+        \item Differs from EME2000 by ~23.4393$^\circ$
+    \end{itemize}
+    \newpage
+    \textbf{Earth-Centered Earth-Fixed:}\par 
+    \includegraphics[width=0.5\linewidth]{Figures/Earth_fixed.png}[H]
+    \begin{itemize}
+        \item Origin: Earth Center
+        \item $\hat{X}$: Osculating vector from center of Earth toward the equator along the Prime Meridian (rotates with Earth)
+        \item $\hat{Z}$: Aligned with Earth's spin axis
+        \item $\hat{Y}$: Completes right hand coordinate frame
+    \end{itemize}
+
+    \textbf{Topocentric Horizon System:}\par 
+    \includegraphics[width=0.5\linewidth]{Figures/SEZ.png}
+    \begin{itemize}
+        \item Usefule for observing satellites and sensor systems
+        \item Origin = site on Earth
+        \item SEX frame rotates with site
+        \item Local Horizon forms fundamental plane:
+            \begin{itemize}
+                \item $\hat{S}$: Points due South
+                \item $\hat{E}$: Points due East
+                \item $\hat{Z}$: Points radially outward
+                \item $\beta$: Azimuth, angle measured from North, clockwise to location beneath object of interest
+                \item el: Elevation, measured from local horizon, positive up to the object $[-90^\circ,90^\circ]$
+            \end{itemize}
+    \end{itemize}
+
+    \textbf{Perifocal Coordinate System:}\par 
+    \includegraphics[width=0.5\linewidth]{Figures/perifocal_orbit.png}
+    \begin{itemize}
+        \item Fundamental Plane: Satellite Orbit
+        \item Origin: Center of Earth
+        \item $\hat{P}$: Points toward perigee
+        \item $\hat{Q}$: $90^\circ$ from $\hat{P}$ axis in direction of satellite motion
+        \item $\hat{W}$: normal to the orbit 
+    \end{itemize}
+
+    \subsection*{Coordinate Frame Transformations}
+    \textbf{Generic:}
+    \begin{equation*}
+        \begin{array}{lll}
+            X,I & R_1(\alpha) & ROT1(\alpha) = 
+            \begin{bmatrix}
+                1 & 0 & 0\\
+                0 & c\alpha & s\alpha\\
+                0 & -s\alpha & c\alpha
+            \end{bmatrix}\\
+            Y,J & R_2(\alpha) & ROT2(\alpha) = 
+            \begin{bmatrix}
+                c\alpha & 0 & -s\alpha\\
+                0 & 1 & 0\\
+                s\alpha & 0 & c\alpha
+            \end{bmatrix}\\
+            Z,K & R_3(\alpha) & ROT3(\alpha) = 
+            \begin{bmatrix}
+                c\alpha & s\alpha & 0\\
+                -s\alpha & c\alpha & 0\\
+                0 & 0 & 1
+            \end{bmatrix}
+        \end{array}
+    \end{equation*}
+
+    \textbf{Perifocal-Rotating Transformation:}\par 
+    \includegraphics[width=\linewidth]{Figures/peri-rot.png}
+    \begin{equation*}
+        \begin{bmatrix}
+            r\\
+            \theta\\
+            h
+        \end{bmatrix}
+        =
+        \begin{bmatrix}
+            c\theta & s\theta & 0\\
+            -s\theta & c\theta & 0\\
+            0 & 0 & 1
+        \end{bmatrix}
+        \begin{bmatrix}
+            P\\
+            Q\\
+            W
+        \end{bmatrix}
+    \end{equation*}
+
+    \textbf{Express position and velocity in PQW frame to Cartesian:}\par 
+    $\vec{r}_{PQW} = r\cos{\theta}\hat{P}+r\sin{\theta}\hat{Q}=
+    \begin{bmatrix}
+        \frac{p\cos{\theta}}{1+e\cos{\theta}}\\
+        \frac{p\sin{\theta}}{1+e\cos{\theta}}\\
+        0
+    \end{bmatrix}
+    $\par
+    $\vec{v}_{PQW} =
+    \begin{bmatrix}
+        \dot{r}\cos{\theta}-r\dot{\theta}\sin{\theta}\\
+        \dot{r}\sin{\theta}+r\dot{\theta}\cos{\theta}\\
+        0
+    \end{bmatrix}
+    =
+    \begin{bmatrix}
+        -\sqrt{\frac{\mu}{p}}\sin{\theta}\\
+        \sqrt{\frac{\mu}{p}}(e+\cos{\theta})\\
+        0
+    \end{bmatrix}
+    $\par 
+    $[C]=R_3(-\Omega)R_1(-i)R_3(-\omega)$\par 
+    $\vec{r}_{xyz} = [C]\vec{r}_{PQW} \quad \vec{v}_{xyz}=[C]\vec{v}_{PQW}$\par 
+    \textbf{To go from XYZ to PQW:}\par 
+    $\vec{r}_{PQW}=R_3(\omega)R_1(i)R_3(\Omega)\vec{r}_{xyz}$
+
+    \subsection*{Ground Track}
+    Earth rotates 15.04$^\circ$/hour eastward beneath the satellite.\par 
+    Ground track advances westward at this rate.\par 
+    We can relate the distance between successive ground track crossing to the
+    orbital period using Earth's rotation:\par 
+    $\mathbb{P}=\frac{D}{15.04^\circ/hour}$
 
 \end{multicols*}  
 \end{document}
