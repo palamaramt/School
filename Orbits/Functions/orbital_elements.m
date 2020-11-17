@@ -2,29 +2,32 @@ function [a,ecc,e_vec,inc,RA,AOP,TA,h_vec] = orbital_elements(r_vec,v_vec,mu)
 %{
 Marissa Palamara
 ASEN 3200
-Orbital Elements Algorithm
+Orbital Elements Algorithm - Hyperbolic Orbit
 %}
 r = norm(r_vec);
 v = norm(v_vec);
 v_r = (r_vec*v_vec')/r;
+
+% Angular Momentum
+h_vec = cross(r_vec,v_vec);
+h = norm(h_vec);
+
 % Specific Energy
 specific_E = v^2/2-mu/r;
 % Semi-major Axis
 a = -mu/(2*specific_E);
-% Angular Momentum
-h_vec = cross(r_vec,v_vec);
-h = norm(h_vec);
+ % Line of Nodes
 N_vec = cross([0 0 1], h_vec);
 N = norm(N_vec);
 % Inclination
 inc = acosd(h_vec(3)/h);
 % Right Ascension
 RA = acosd(N_vec(1)/N);
-if N_vec(3) < 0
+if N_vec(2) < 0
     RA = 360 - RA;
 end
 % Eccentricity and its vector
-e_vec = 1/mu * (((v^2-mu/r).*r_vec) - (r*v_r.*v_vec));
+e_vec = cross(v_vec,h_vec)/mu - r_vec/r;
 ecc = norm(e_vec);
 % Argument of Perigee
 AOP = acosd((N_vec*e_vec')/(N*ecc));
