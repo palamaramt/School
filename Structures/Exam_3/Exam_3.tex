@@ -383,7 +383,7 @@
 
     The only degree of freedom is $u = u(t)$.
 
-    \subsection*{Undampled Oscillator}
+    \subsection*{Undamped Oscillator}
     Remove the spring and replace it by force $F_s = k(\delta_s+u(t))$. The other
     two forces acting on the mass are its weight and the inertia force $m\ddot{u}(t)$,
     which acts in the opposite direction to the acceleration $\ddot{u}=\ddot{u}(t)$.
@@ -422,7 +422,7 @@
     $$H=T+V=T_0+U_0=\frac{1}{2}mv_o^2+\frac{1}{2}ku_0^2$$
 
     \newpage
-    \subsection*{Free Vibrations of Viscous-Dampled SDOF Oscillator}
+    \subsection*{Free Vibrations of Viscous-Damped SDOF Oscillator}
     $$\boxed{m\ddot{u}+c\dot{u}+ku=0}$$
     $$w_n=\sqrt{\frac{k}{m}} \text{ , } c=2\xi\omega_nm$$
     $$\boxed{\ddot{u}+2\xi\omega_n\dot{u}+\omega_n^2u=0}$$
@@ -474,5 +474,46 @@
     \end{equation*}
 
     Energy Dissipation: Page 10 of Ch 20.
+
+    \section*{Harmonically Forced SDOF Oscillator}
+    \includegraphics[width=\linewidth]{Figures/forced_oscillator.png}\par 
+    Harmonic Excitation Force: $p(t)=p_0\cos{\Omega t}$ where $\Omega$ is the excitation frequency. $u=u(t)$ is the dynamic motion measured
+    from the static equilibrium position.
+    $$\boxed{m\ddot{u}+c\dot{u}+ku=p_0\cos{\Omega t}}$$
+    The complete response will be the sum of the transient (homogeneous) and steady-state (particular) components. If 
+    damping is present, after a while the transient part becomes unimportant. 
+    $$\boxed{u+p(t)=U\cos{(\Omega t-\alpha)}}$$
+    $$\dot{u}_p(t)=-\Omega U \sin{(\Omega t- \alpha)} \text{, } \ddot{u}_p(t) = -\Omega^2U\cos{(\Omega t-\alpha)}$$
+
+    \begin{equation*}
+        \begin{array}{l}
+            (kU-m\Omega^2U)^2+(c\Omega U)^2 = p_0^2 \text{, } \tan{\alpha}=\frac{c\Omega}{k-m\Omega^2}\\
+            U_0=\frac{p_0}{k} \text{, } r = \frac{\Omega}{\omega_n}\\
+        \end{array}
+    \end{equation*}
+
+    $U_0$ is the displacement that the mass would undergo if a force of mangitude $p_0$ where to be applied statically.
+    $$\boxed{D_s(r) = \frac{U(r)}{U_0}=\frac{1}{\sqrt{(1-r^2)^2+(2\xi r)^2}} \text{, } \tan{\alpha(r)}=\frac{2\xi r}{1-r^2}}$$
+    $D_s$ is the steady-state magnification factor, also known as gain. The peaks below observed as $r$ is near unity and $\xi << 1$ identify resonance.
+    
+    \includegraphics[width=\linewidth]{Figures/freq_response_harmonic_osc.png}
+
+    \textbf{Total Response}
+    $$\boxed{u(t)=U_0D_s\cos{\Omega t-\alpha}+u_h(t) \text{, in which } u_h(t) = e^{-\xi \omega_n t}\left(A_1\cos{\omega_nt}+A_2\sin{\omega_nt}\right)}$$
+
+    \subsection*{Response to Harmonic Base Excitation}
+    \includegraphics[width=\linewidth]{Figures/harmonic_base.png}\par 
+    The base displaces by a prescribed harmonic motion specified as:
+    $$u_b(t) = U_b\cos{\Omega t-\alpha}$$
+    $$m\ddot{u}+k(u-u_b)+c(\dot{u}-\dot{u}_b)=0$$
+    $$\boxed{m\ddot{u}+c\dot{u}+ku=ku_b+c\dot{u}_b}$$
+    If the base excitation is harmonic:
+    $$\boxed{m\ddot{u}+c\dot{u}+ku=U_b\left[k\cos{(\Omega t-\alpha_b)}+c\Omega\sin{(\Omega t-\alpha_b)}\right]}$$
+    If the damping vanishes, $c=0$.
+
+    \section*{MDOF Dynamical Systems}
+    
+
+
 \end{multicols*}  
 \end{document}
