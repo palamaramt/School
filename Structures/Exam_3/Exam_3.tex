@@ -19,7 +19,7 @@
     \vspace{-0.5cm}
     \setlist{nolistsep}
     % ----- Virtual Force ----- %
-    \subsection*{Virtual Force}
+    \section*{Virtual Force}
     $\delta W_e^*+\delta W_i^*=0$\par 
     \includegraphics[width=0.666\linewidth]{Figures/Virtual_Force_Springs.png}\par
     $\delta W_e^* = u_A^{sphere} \delta P \rightarrow \delta F_{int}=\delta P$\par 
@@ -30,7 +30,7 @@
     equilibrium, if the displacements and deformations are compatible.
 
     % ----- Virtual Force ----- %
-    \textbf{Virtual Force Method for Computing Deflections}\par 
+    \subsection*{Virtual Force Method for Computing Deflections}\par 
     $\delta W_e^*=u \delta P$ or $\delta W_E^* = \theta \delta M$ \par 
     Where $u$ is the real displacement of the point at which the virtual force
     is applied. \par 
@@ -39,7 +39,7 @@
     Replace $\delta P$ with 1, $\bar{1}u=\sum\limits_N \bar{f}_{int}\Delta$
 
     % ----- Truss Example ----- %
-    \textbf{Truss Example}
+    \subsection*{Truss Example}
     
     \includegraphics[width=0.5\linewidth]{Figures/Truss_Example_VF.png}
 
@@ -84,7 +84,7 @@
    $\bar{1}v = \sum\limits_{i=1}^2 \frac{N_i\bar{n}_i^vL_i}{E_iA_i} = -44.4 \cdot 10^{-3} in$ \par
 
     % ----- Thermal Loading ----- %
-    \textbf{Thermal Loading}
+    \subsection*{Thermal Loading}
     Assuming that the material properties are constant in the bar and expressing
     the virtual stress in terms of the internal force, $\bar{n}$, we obtain:\par
     $\delta W_{ie,bar}^{*,thermal}=\alpha \Delta T \bar{n} L$\par 
@@ -96,7 +96,7 @@
     From here follow same procedure as previous.
 
     % ----- Beam Example ----- %
-    \textbf{Beam Example}\par 
+    \subsection*{Beam Example}\par 
     \includegraphics[width=0.5\linewidth]{Figures/Beam_Eample_VF.png}\par 
     First compute internal virtual work of the beam by virtual stress due to a unit dummy load.\par 
     $\delta W_{ie,beam}^*=\int \int \int_V \varepsilon\bar{\sigma}dxdydz$\par 
@@ -122,7 +122,7 @@
     Then do the same thing for $\phi$
 
     % ----- Direct Stiffness Method ----- %
-    \subsection*{The Direct Stiffness Method}\par 
+    \section*{The Direct Stiffness Method}\par 
     \includegraphics[width=\linewidth]{Figures/DSM1_Example.png}
 
     \begin{equation*}
@@ -299,7 +299,7 @@
     \end{enumerate}
 
     Finally, \par 
-    $\textbf{f} = \textbf{f}^{(1)}+\textbf{f}^{(2)}+\textbf{f}^{(3)}=\left(\textbf{K}^{(1)}+\textbf{K}^{(2)}+\textbf{K}^{(3)}\right)\textbf{u} = \textbf{Ku}$
+    $$\textbf{f} = \textbf{f}^{(1)}+\textbf{f}^{(2)}+\textbf{f}^{(3)}=\left(\textbf{K}^{(1)}+\textbf{K}^{(2)}+\textbf{K}^{(3)}\right)\textbf{u} = \textbf{Ku}$$
 
     \textbf{Solution}
 
@@ -351,17 +351,128 @@
     This beam can be solved like the truss from here on out. See CH 19 page 3 
     for more detailed steps.
 
-    \textbf{Analytical Solution by Discontinuity Functions}
+    \subsection*{Analytical Solution by Discontinuity Functions}
     \begin{equation*}
-        \langle x-a \rangle ^n = \left{ 
-            \begin{array}{lll}
-            (x-a)^n & \text{if} & x>a\\
-            0 & \text{if} & x \le a
-        \end{array}
-        \right.
+        \langle x-a \rangle ^n = \begin{cases} 
+            (x-a)^n  & x>a\\
+            0 &  x \le a
+        \end{cases}
     \end{equation*}
+
+    Begin with:\par 
+    $q(x)=-w_0\langle x-L \rangle ^0$\par 
+    Then integrate 4 times in x:\par 
+    \begin{equation*}
+        \begin{array}{llll}
+            V(x) & = & -w_0\langle x-L \rangle ^1 + C_1\\
+            M(x) & = & -\frac{1}{2}w_0\langle x-L\rangle ^2 + C_1x+C_2\\
+            EI\theta (x) = EIv'(x) & = & -\frac{1}{6}w_0\langle x-L\rangle^3+\frac{1}{2}C_1x^2+C_2x+C_3\\
+            EIv(x) & = & -\frac{1}{24}w_0\langle x-L\rangle^4 + \frac{1}{6}C_1x^3+\frac{1}{2}C_2x^2+C_3x+C_4
+        \end{array}
+    \end{equation*}
+
+    Then apply boundary conditions and solve.
+
+    % ----- Single-DOF Oscillator ----- %
+    \section*{Free Single-DOF Oscillator}
+    A weight of mass $m > 0$ hangs from an extensional spring of stiffness $k /ge 0$
+    under gravity acceleration $g$ directed along the spring direction. The weight
+    force is $W = mg$. Assume small displacements.
+
+    $$\delta_s=W/k=mg/k$$
+
+    The only degree of freedom is $u = u(t)$.
+
+    \subsection*{Undampled Oscillator}
+    Remove the spring and replace it by force $F_s = k(\delta_s+u(t))$. The other
+    two forces acting on the mass are its weight and the inertia force $m\ddot{u}(t)$,
+    which acts in the opposite direction to the acceleration $\ddot{u}=\ddot{u}(t)$.
+
+    Equilibrium of forces in the $x$ direction requires $m\ddot{u}=W-k(\delta_s+u)=mg-k\delta_s-ku$.
+    On cancelling $mg-k\delta_s=0$, we get:
+
+    $$\boxed{m \ddot{u}+ku=0}$$
+
+    This results in the formal form:\par 
+    $$\boxed{\ddot{u}+\omega_n^2u=0, \text{ in which } \omega_n=\sqrt\frac{k}{m}}$$
     
+    \includegraphics[width=\linewidth]{Figures/SDOF_Undamped.png}
 
+    Solving for $u(t)$:
 
+    \begin{equation*}
+        \begin{array}{lll}
+            u(t) & = & C_1e^{i\omega_nt}+C_2e^{-i\omega_nt}\\
+            u(t) & = & A_1\cos{\omega_nt}+A_2\sin{\omega_nt}\\
+            u(t) & = & u_0\cos{\omega_nt}+\frac{v_0}{\omega_n}\sin{\omega_nt}\\
+            u(t) & = & U\cos{\omega_nt-\alpha}\\
+            U & = & \sqrt{u_0^2 + \left(\frac{v_o}{\omega_n}\right)^2}\\
+            \tan{\alpha} & = & \frac{v_0}{\omega_nu_0}
+            
+        \end{array}
+    \end{equation*}
+
+    If the mass is released from rest, and this $v_0 = 0$,\par 
+    \begin{center}
+        $f_n=\frac{\omega_n}{2\pi}$ and $T_n=\frac{1}{f_n}=\frac{2\pi}{\omega_n}$
+    \end{center}
+    
+    Energy Conservation Property:\par 
+    $$T=T_0+\frac{1}{2}m\dot{u}^2 \text{ and } V=V_0+\frac{1}{2}ku^2$$
+    $$H=T+V=T_0+U_0=\frac{1}{2}mv_o^2+\frac{1}{2}ku_0^2$$
+
+    \newpage
+    \subsection*{Free Vibrations of Viscous-Dampled SDOF Oscillator}
+    $$\boxed{m\ddot{u}+c\dot{u}+ku=0}$$
+    $$w_n=\sqrt{\frac{k}{m}} \text{ , } c=2\xi\omega_nm$$
+    $$\boxed{\ddot{u}+2\xi\omega_n\dot{u}+\omega_n^2u=0}$$
+
+    \includegraphics[width=\linewidth]{Figures/SDOF_Ddamped.png}
+
+    Solving for $u(t)$:
+    \begin{equation*}
+        \begin{array}{lll}
+            u(t) & = & Ae^{\lambda t}\\
+            0 & = & \lambda^2+2\xi\omega_n\lambda+\omega_n^2\\
+            \lambda_{1,2} & = & -\xi\omega_n\pm\omega_n\sqrt{\zeta^2-1}
+        \end{array}
+    \end{equation*}
+
+    $\xi<1$ \textit{Underdamped case:} Damping is subcritical. The roots $\lambda_{1,2}$
+    are complex conjugate. The motion is oscillatory with decreasing amplitude.
+    This is the most common case in typical structures.\par 
+    $\xi>1$ \textit{Overdampled case:} Damping is called overcritical. The roots
+    $\lambda_{1,2}$ are negative real and distinct. The motion is non-oscillatory.
+    Its amplitude decays monotonically except possibly for one zero crossing.\par 
+    $\xi=1$ \textit{Critically Damped case:} The roots $\lambda_{1,2}$ are negative
+    real and coalesce. The motion is non-oscillatory. Its amplitude decays monotonically
+    except possibly for one zero crossing. Most rapid decay.
+
+    \textbf{Underdamped Case: $\xi<1$}\par 
+    \begin{equation*}
+        \begin{array}{lll}
+            \lambda_{1,2} & = & -\xi\omega_n\pm i\omega_d\\
+            \omega_d & = & \omega_n\sqrt{1-\xi^2}\\
+            T_d & = & \frac{2\pi}{\omega_d}\\
+            u(t)&=&e^{-\xi\omega_nt}\left(u_0\cos{\omega_dt+\frac{v_0+\xi\omega_nu_0}{\omega_d}\sin{\omega_dt}}\right)
+        \end{array}
+    \end{equation*}
+
+    \textbf{Critically Damped: $\xi=1$}\par 
+    \begin{equation*}
+        \begin{array}{lll}
+            u(t) & = & [u_0+(v_0+\omega_nu_0)t]e^{-\omega_nt}
+        \end{array}
+    \end{equation*}
+
+    \textbf{Overdamped Case: $\xi>1$}\par 
+    \begin{equation*}
+        \begin{array}{lll}
+            \omega^* & = & \omega_n\sqrt{\xi^2-1}\\
+            u(t) & = & e^{-\xi\omega_nt}\left[u_0\cosh{\omega_*t}+\frac{v_0+\xi\omega_nu_0}{\omega^*}\sinh{\omega^*t}\right]
+        \end{array}
+    \end{equation*}
+
+    Energy Dissipation: Page 10 of Ch 20.
 \end{multicols*}  
 \end{document}
