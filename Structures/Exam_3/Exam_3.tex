@@ -512,6 +512,31 @@
     If the damping vanishes, $c=0$.
 
     \section*{MDOF Dynamical Systems}
+    \includegraphics[width=\linewidth]{Figures/MDOF.png}
+    $$\Sigma F_x \text{at mass 1: } -F_{I1}-F_{s1}-F_{d1}+F_{s2}+F_{d2}+p_1=0$$
+    $$\Sigma F_x \text{at mass 2: } -F_{I2}-F_{s2}-F_{d2}+p_2=0$$
+
+    Replace with quantities shown in figure above.
+    $$\boxed{\begin{array}{rll}
+        m_1\ddot{u}_1+c_1\dot{u}_1+c_2\dot{u}_2+k_1u_1+k_2u_1-k_2u_2 & = & p_1\\
+        m_2\ddot{u}_2-c_2\dot{u}_1+c_2\dot{u}_2-k_2u_1+k_2u_2 & = & p_2
+    \end{array}}$$
+
+    \subsection*{Matrix Form}
+    \includegraphics[width=\linewidth]{Figures/matrix_MDOF.png}
+    \newpage
+    \subsection*{Undamped Natural Frequencies and Modes}
+    Assuming undamped, $c_1=c_2=0$, and unforced, $p_1=p_2=0$, the matrix system reduces to:
+    $$\boxed{\bf{M\ddot{u}+Ku=0}}$$
+    Assuming the undamped, unforced system is undergoing in-phase harmonic motions of circular frequency $\omega$. 
+    $$\bf{u}(t)=\bf{U}\cos{(\omega t-\alpha)} \text{, or } \bf{u}(t)=\bf{U}e^{i\omega t}$$
+    $$\boxed{[\bf{K}-\omega^2\bf{M}]\bf{U}=\bf{D}(\omega)\bf{U}=\bf{0}}$$
+    For nontrivial solution, $\bf{U}\neq 0$, the determinant of the dynamic matrix must vanish:
+    $$\boxed{C(\omega^2)=\mbox{det}\bf{D}(\omega)=\mbox{det}[\bf{K}-\omega^2\bf{M}]=0}$$
+    $$f_i=\frac{\omega_i}{2\pi} \text{, } T_i=\frac{1}{f_i}=\frac{2\pi}{\omega_i}$$
+    How about the \textbf{U} vector? Insert $\omega^2=\omega_i^2$ and solved for $\bf{U}\neq0$. These two U vectors are eigenvectors (modes).
+
+    Use null function in MATLAB and divide by last index in matrix.
     
 
 
