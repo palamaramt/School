@@ -1,0 +1,96 @@
+\documentclass{article}
+\usepackage[margin = 0.15in,landscape]{geometry}
+%\usepackage{wasysym}
+\usepackage{multicol}
+\usepackage{array}
+\usepackage{amsmath}
+\usepackage{amssymb}
+\usepackage{lmodern}
+\usepackage{graphicx}
+\usepackage{enumitem}
+\usepackage{stix}
+\usepackage{mathrsfs}
+\setlength\parindent{0pt}
+\renewcommand{\baselinestretch}{0.75}
+
+
+
+
+\begin{document}
+\begin{multicols*}{2}
+    Marissa Palamara\par 
+    ASEN 3111\par 
+    Spring 2021
+    \vspace{-0.5cm}
+    \setlist{nolistsep}
+
+% ---------- Concepts ---------- %
+\section*{Concepts}
+
+% Variables
+\subsection*{Variables}
+\textbf{Pressure} - Normal force per unit area exerted on a surface due to the time rate of change of momentum of the gas particles impacing said surface.\par
+$P = \lim_{dA\to 0}\frac{dF_n}{dA}$\par
+\textbf{Density} - Mass per unit volume.\par
+$\rho = \lim_{dV\to 0} \frac{dm}{dV}$\par
+\textbf{Temperature} - Change in kinetic energy due to random molecular motion.\par
+$KE = \frac{3}{2}kT$\par
+\textbf{Flow Velocity} - Velocity due to organized motion.\par
+$\vec{v} = \frac{d}{dt}\vec{x}$\par
+
+% Forces and Moments
+\subsection*{Forces and Moments}
+\textbf{Causes of forces and moments on an aerodynamic body}:\par
+Pressure Distribution over the body surface.\par
+Shear Stress Distribution over the surface.\par
+
+\includegraphics[width=0.5\linewidth]{Images/aero_forces.png}\par
+\textbf{Lift and Drag per Unit Span}:\par
+$L' = N'\cos{\alpha}-A'\sin{\alpha}$\par
+$D' = N'\sin{\alpha}+A'\cos{\alpha}$\par
+\textbf{Normal Force per Unit Span}: \par
+$N' = \int_{LE}^{TE}(P_u\cos{\theta}+\tau_u\sin{\theta})ds_u+\int_{LE}^{TE}(P_l\cos{\theta}-\tau_l\sin{theta})ds_l$\par
+\textbf{Axial Force per Unit Span}: \par
+$A' = \int_{LE}^{TE}(-P_u\sin{\theta}+\tau_u\cos{\theta})ds_u+\int_{LE}^{TE}(P_l\sin{\theta}+\tau_l\cos{\theta})ds_l$\par
+\textbf{Moment per Unit Span}:\par
+$M_*'=\int_{LE}^{TE}\left[ (P_u\cos{\theta}+\tau_u\sin{\theta})(x-x^*)-(P_u\sin{\theta}-\tau_u\cos{\theta})(y-y*)\right]ds_u$ \par$+ \int_{LE}^{TE}\left[(-P_l\cos{\theta}+\tau_u\sin{\theta})(x-x^*)+(P_l\sin{\theta}+\tau_l\cos{\theta})(y-y*)\right]ds_l$\par
+When $x^*=y^*=0$ we obtain the moment about the leading edge.\par
+\textbf{Center of Pressure}:\par
+$x_{cp} = -\frac{M_{LE}'}{N'}$\par
+
+\subsection*{Force and Moment Coefficients}
+\textbf{Dynamic Pressure}: $q = \frac{1}{2}\rho_\infty v_\infty^2$
+\textbf{Reference Area}: $S$\par
+\textbf{Reference Length}: $L$ or $c$\par
+\textbf{Lift Coefficient}: $c_L=\frac{L}{q_\infty S}$\par
+\textbf{Drag Coefficient}: $c_D = \frac{D}{q_\infty S}$\par
+\textbf{Moment Coefficient}: $c_M=\frac{M}{q_\infty S L}$
+
+\subsection*{Buckingham Pi Theorem}
+If we have a physically meaningful equation such as:\par
+$f(P_1,P_2,...,P_N) = 0$\par
+where $P_i$ are physical variables in terms of $K$ independent physical units (mass, length, time, temperature) then it can be restated as:\par 
+$F(\Pi_1,\Pi_2,...,\Pi_{N-K}) = 0$ or\par $\Pi_{N-K}=G(\Pi_1,\Pi_2,...,\Pi_{N-K-1})$\par 
+where ${\Pi_i}$ are dimensionaless variables known as Pi Groups.
+
+% ---------- Calculus ---------- %
+\section*{Calculus Review}
+\subsection*{Vector Calculus}
+\textbf{Magnitude}: $|\vec{A}|=\sqrt{A_1^2+A_2^2+a_3^2}$\par 
+\textbf{Dot Product}: $\vec{A}\cdot\vec{B}=A_xB_x+A_yB_y+A_zB_z=|\vec{A}||\vec{B}|\cos{\theta}$\par 
+\textbf{Cross Product}:$\vec{A}\times\vec{B}=(A_yB_z-A_zB_y)\hat{i}+(A+zB_x-a_xB_z)\hat{j}+(A_xB_y-A_yB_x)\hat{k}$\par
+$|\vec{A}\times\vec{B}|=|\vec{A}||\vec{B}|\sin{\theta}$\par 
+\textbf{Gradient of Scalar Field}: $\vec{\nabla}p=\frac{\partial p}{\partial x}\hat{i}+\frac{\partial p}{\partial y}\hat{j}+\frac{\partial p}{\partial z}\hat{k}$ vector field\par 
+Directional Derivative: $\frac{dp}{ds}=\vec{\nabla}p\cdot\vec{s}$-> unit vector in $\vec{s}$ direction.\par 
+\textbf{Divergence of a Vector Field}: $\text{div}\vec{V}=\vec{\nabla}\cdot\vec{V}=\frac{\partial V_x}{\partial x}+\frac{\partial V_y}{\partial y}+\frac{\partial V_z}{\partial z}$ scalar field\par 
+\textbf{Curl of a Vector Field}: $\text{curl}\vec{V}=\vec{\nabla}\times\vec{V}=(\frac{\partial V_z}{\partial y}-\frac{\partial V_y}{\partial z})\hat{i}
++(\frac{\partial V_x}{\partial z}-\frac{\partial V_z}{\partial x})\hat{j}
++(\frac{\partial V_y}{\partial x}-\frac{\partial V_x}{\partial y})\hat{k}$\par 
+\subsection*{Integrals}
+\textbf{Stokes' Theorem}: $\oint_c \vec{A}\cdot\vec{ds}=\iint_S(\vec{\nabla}\times\vec{A})\cdot\vec{dS}$\par 
+\textbf{Divergence Theorem}: $\oiint_S\vec{A}\cdot\vec{dS}=\oiiint_\mathscr{V}(\vec{\nabla}\cdot\vec{A}d\mathscr{V})$\par 
+\textbf{Gradient Theorem}: $\oiint_S p\vec{dS}=\oiiint_\mathscr{V} \vec{\nabla}pd\mathscr{V}$
+
+
+\end{multicols*}  
+\end{document}
