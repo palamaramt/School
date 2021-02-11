@@ -16,7 +16,7 @@
 
 
 \begin{document}
-\begin{multicols*}{3}
+\begin{multicols*}{2}
     Marissa Palamara\par 
     ASEN 3128\par 
     Spring 2021
@@ -49,7 +49,12 @@ $\alpha$ = angle of attack, $\beta$ = sideslip angle
 $R_E^B(\phi,\theta,\psi)=R_{v2}^B(\phi)R_{v1}^{v2}(\theta)R_E^{v1}(\psi)$\par 
 Body to Inertial Frame Transformation:\par 
 $\mathbf{p}_B=R_E^B\mathbf{p}_E \rightarrow \mathbf{p}_E=R_B^E\mathbf{p}_B$\par 
-$R_B^E=(R_E^B)^{T}$\par 
+$R_B^E=(R_E^B)^{T}=
+\begin{pmatrix}
+    c_{\theta}c_{\psi} & s_{\phi}s_{\theta}c_{\psi}-c_{\phi}s_{\psi} & c_{\phi}s_{\theta}c_{\psi}+s_{\phi}s_{\psi}\\
+    c_{\theta}c_{\psi} & s_{\phi}s_{\theta}c_{\psi}+c_{\phi}s_{\psi} & c_{\phi}s_{\theta}c_{\psi}-s_{\phi}s_{\psi}\\
+    -s_{\theta} & s_{\phi}c_{\theta} & c_{\phi}c_{\theta}\\
+\end{pmatrix}$\par 
 \textbf{Stability Frame}: $\mathbf{p}_s=R_B^s\mathbf{p}_B$\par 
 $R_B^s(\alpha)=
 \begin{pmatrix}
@@ -85,7 +90,95 @@ $R_w^B(\alpha,\beta)=(R_B^w)^T(\alpha,\beta)$
     $q$         & Angular Velocity along $\hat{j}_B$ (Pitch rate)\\
     $r$         & Angular Velocity along $\hat{k}_B$ (Yaw rate)\\ \hline
 \end{tabular}
-% Pick up at lecture 4
+\subsection*{Kinematics}
+$\frac{d\vec{r}_E}{dt}=\vec{V}_E^E=R_B^E\cdot\vec{V}_B^E$\par 
+$\omega_B=R(\phi)_{v2}^BR(\theta)_{v1}^{v2}(0;0;\dot{\psi})+R(\phi)_{v2}^B(0;\dot{\theta};0)+(\dot{\phi};0;0)$
+\textbf{Gravity Force in Inertial Frame}\par 
+$\mathbf{f}_E^g=(0;0;mg)$\par 
+\textbf{Gravity Force in Body Frame}\par 
+$\mathbf{f}_B^g=\mathbf{R}_E^B(0;0;mg)=\begin{pmatrix}
+    -mg\sin{\theta}\\
+    mg\cos{\theta}\sin{\phi}\\
+    mg\cos{\theta}\cos{\phi}\\
+\end{pmatrix}$\par
+\textbf{Aerodynamic Force in Body Frame}\par 
+$\mathbf{f}_B^a=(X;Y;Z)$\par 
+\textbf{Aerodynamic Moment in Body Frame}\par 
+$\mathbf{G}_B=\mathbf{G}_B^a=(L;M;N)$
+
+\section*{Equations of Motion}
+$\begin{pmatrix}
+    \dot{x}_E\\
+    \dot{y}_E\\
+    \dot{z}_E\\
+\end{pmatrix}
+=
+\begin{pmatrix}
+    c_{\theta}c_{\psi} & s_{\phi}s_{\theta}c_{\psi}-c_{\phi}s_{\psi} & c_{\phi}s_{\theta}c_{\psi}+s_{\phi}s_{\psi}\\
+    c_{\theta}c_{\psi} & s_{\phi}s_{\theta}c_{\psi}+c_{\phi}s_{\psi} & c_{\phi}s_{\theta}c_{\psi}-s_{\phi}s_{\psi}\\
+    -s_{\theta} & s_{\phi}c_{\theta} & c_{\phi}c_{\theta}\\
+\end{pmatrix}
+\begin{pmatrix}
+    u^E\\
+    v^E\\
+    w^E\\
+\end{pmatrix}$\par 
+$\begin{pmatrix}
+    \dot{\phi}\\
+    \dot{\theta}\\
+    \dot{\psi}\\
+\end{pmatrix}
+=\begin{pmatrix}
+    1 & \sin{\phi}\tan{\theta} & \cos{\phi}\tan{\theta}\\
+    0 & \cos{\phi} & -\sin{\phi}\\
+    0 & \sin{\phi}\sec{\theta} & \cos{\phi}\sec{\theta}\\
+\end{pmatrix}
+\begin{pmatrix}
+    p\\
+    q\\
+    r\\
+\end{pmatrix}$\par 
+$\begin{pmatrix}
+    \dot{u}^E\\
+    \dot{v}^E\\
+    \dot{w}^E\\
+\end{pmatrix}
+=\begin{pmatrix}
+    rv^E-qw^E\\
+    pw^E-ru^E\\
+    qu^E-pv^E\\
+\end{pmatrix}
++g\begin{pmatrix}
+    -\sin{\theta}\\
+    \cos{\theta}\sin{\phi}\\
+    \cos{\theta}\cos{\phi}\\
+\end{pmatrix}
++\frac{1}{m}\begin{pmatrix}
+    X\\
+    Y\\
+    Z\\
+\end{pmatrix}$\par 
+$\begin{pmatrix}
+    \dot{p}\\
+    \dot{q}\\
+    \dot{r}\\
+\end{pmatrix}
+=\begin{pmatrix}
+    \Gamma_1pq-\Gamma_2qr\\
+    \Gamma_5pr-\Gamma_6(p^2-r^2)\\
+    \Gamma_7pq-\Gamma_1qr
+\end{pmatrix}
++\begin{pmatrix}
+    \Gamma_3L+\Gamma_4N\\
+    \frac{1}{I_y}M\\
+    \Gamma_4L+\Gamma_8N
+\end{pmatrix}$
+
+\section*{Quadrotor}
+Forces and moments = gravity, aerodynamics, and thrust (control)\par 
+$\mathbf{f}=\mathbf{f}^{grav}+\mathbf{f}^{aero}+\mathbf{f}^{cntl}$\par 
+$\mathbf{m}=\mathbf{m}^{aero}+\mathbf{m}^{cntl}$\par 
+$mathbf{f}_B^{cntl}=(0;0;Z_c)$ and $mathbf{m}_B^{cntl}=(L_c;M_c;N_c)$
 
 \end{multicols*}  
 \end{document}
