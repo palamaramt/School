@@ -12,7 +12,7 @@
 
 
 \begin{document}
-\begin{multicols*}{3}
+\begin{multicols}{3}
     Marissa Palamara\par 
     ASEN 3112\par 
     Spring 2021
@@ -107,7 +107,72 @@
             \end{array}
         \right.
     \end{equation*}
-    % Begin in lecture 4
+    
+    % ----- Entropy ----- %
+    \newpage
+    \section*{Entropy}
+    \begin{itemize}
+        \item Processes can only occur in a certain direction and that direction must comply with the increase of entropy principle: $S_\text{gen}\geq 0$.
+        \item Entropy is a nonconserved property, and there is no such thing as the conservation of entropy principle. Entropy is conserved during the idealized reversible processes only and increases during all actual processes.
+        \item Entropy generation is the measure of the magnitudes of the irreversibilities during the performance of engineering systems. It is also used to establish criteria for the performance of engineering devices.
+    \end{itemize}
+    \textbf{Clausius Inequality}: \fbox{$\oint\frac{\delta Q}{T}\leq 0$}\par 
+    $\delta W_C=\delta Q_R-dE_C$\par 
+    Reversible cyclic device:\par $\frac{\delta Q_R}{T_R}=\frac{\delta Q}{T}\rightarrow \delta W_C=T_R\frac{\delta Q}{T}-dE_C$\par 
+    For a system underoing a cycle: $W_C=T_R\oint\frac{\delta Q}{T}$\par 
+    $\oint\left(\frac{\delta Q}{T}\right)_\text{{int,rev}}=0$ and $dS=\left(\frac{\delta Q}{T}\right)_{\text{int,rev}}$ (kJ/K)\par
+    \textbf{Entropy}: $\Delta S=S_2-S_1=\int_1^2\left(\frac{\delta Q}{T}\right)_{\text{int,rev}}$\par
+    \textbf{Special Case}: \par Internally Reversible Isothermal Heat Transfer Process $\Delta S=\frac{Q}{T_0}$ (kJ/K) where $T_0$ is the constant temperature of the system and $Q$ is the heat transfer for the internally reversible process.\par 
+    \textbf{Generated Entropy}: \par
+    $S_{\text{gen}}=\Delta S_{\text{total}}=\Delta S_{\text{sys}}+\Delta S_{\text{surr}}\geq 0\rightarrow \Delta S_{\text{sys}}=S_2-S_1=\int_1^2\frac{\delta Q}{T}+S_\text{gen}$\par 
+    \textbf{The Increase of Entropy Principle}:
+    \begin{equation*}
+        S_\text{gen}\left\{
+            \begin{array}{l}
+                <0\text{ impossible process}\\
+                =0\text{ reversible process}\\
+                >0\text{ irreversible process}
+            \end{array}
+        \right.
+    \end{equation*}
+    % Entropy Change of Pure Substances
+    \subsection*{Entropy Change of Pure Substances}
+    Once the state of the system is fixed the value of entropy is also fixed.\par 
+    $\Delta S=m\Delta s=m(s_2-s_1)$ (kJ/K)\par
+    \includegraphics[width=0.5\linewidth]{Images/entropy_pure_subtances.png}\par 
+    T-s Diagram for water$\downarrow$\par
+    \includegraphics[width=0.5\linewidth]{Images/Ts_water.png}
+    % Isentropic Processes
+    \subsection*{Isentropic Processes}
+    $\Delta S=0$ or $S_2=S_1$ (kJ/kgK)
+    % Property Diagrams
+    \subsection*{Property Diagrams involving Entropy}
+    \includegraphics[width=\linewidth]{Images/Diagrams1.png}\par 
+    \includegraphics[width=0.5\linewidth]{Images/Diagrams2.png}
+    % What is Entropy
+    \subsection*{What is Entropy?}
+    \textbf{Boltzmann Relation}: $S=k\ln{W}$\par 
+    $k=1.3806\times 10^{-23}$ J/K\par 
+    \textbf{Gibb's Formulation}: $S=-k\sum P_i\log{P_i}$\par 
+    \textbf{Pure Crystal}: $T=0$ K then Entropy = 0\par The entropy of a pure crystalline substance at absolute zero temperature is zero (Third Law of Thermodynamics)
+    % The Tds Relations
+    \subsection*{The $Tds$ Relations}
+    \textbf{The First $Tds$ or Gibbs Equation}:\par 
+    $\delta Q_\text{int,rev}-\delta W_\text{int,rev,out}=dU$\par 
+    $\delta Q_\text{int,rev}=TdS$ and $\delta W_\text{int rev,out}=PdV$\par 
+    $TdS=dU+PdV$ (kJ)\par 
+    \fbox{$Tds=du+Pdv$}\par 
+    \textbf{The Second $Tds$ Equation}:\par 
+    $h=u+Pv$\par 
+    $dh=du+Pdv+vdP$ and $Tds=du+Pdv$\par 
+    \fbox{$Tds=dh-vdP$}\par 
+    \textbf{Finally}:\par 
+    \fbox{$ds=\frac{du}{T}+\frac{Pdv}{T}=\frac{dh}{T}-\frac{vdP}{T}$}
+    % Entropy Change of Liquids and Solids
+    \subsection*{Entropy Change of Liquids and Solids}
+    Liquids and solids can be approximated as incompressible substances.\par 
 
-\end{multicols*}  
+
+
+\end{multicols}  
 \end{document}
