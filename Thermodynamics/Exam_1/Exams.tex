@@ -209,10 +209,101 @@
     When KE and PE are negligible: $w_\text{rev}=-\int_1^2 vdP$\par 
     For steady flow of a liquid through a device that involves no work, like a pipe, the work term is zero:\par 
     $v(P_2-P_1)+\frac{V_2^2--V_1^1}{2}+g(z_2-z_1)=0$
+    % Isentropic Efficiencies of Steady-Flow Devices
+    \subsection*{Isentropic Efficiencies of Steady-Flow Devices}
+    \textbf{Turbine}: $\eta_T=\frac{w_a}{w_s}$ where $w_a$ is actual turbine work and $w_s$ is isentropic turbine work.\par 
+    $\eta_T=\frac{h_1-h_{2a}}{h_1-h_{2s}}$\par 
+    \textbf{Compressors and Pumps}: \par 
+    $\eta_C=\frac{w_s}{w_a}=\frac{h_{2s}-h_1}{h_{2a}-h_1}$ when kinetic and potential energies are negligible.\par 
+    $\eta_P=\frac{w_s}{w_a}=\frac{v(P_2-P_1)}{h_{2a}-h_1}$\par 
+    \textbf{Nozzles}: $\eta_N=\frac{V_{2a}^2}{V_{2s}^2}=\frac{h_1-h_{2a}}{h_1-h_{2s}}$ where $V$ is velocity and $h_1=h_{2a}+\frac{V_{2a}^2}{2}$
+    % Entropy Balance
+    \subsection*{Entropy Balance}
+    Total entropy entering - total entropy leaving + total entropy generated = change in total entropy of the system.\par 
+    $S_\text{in}-S_\text{out}+S_\text{gen}=\Delta S_\text{system}$\par 
+    $\Delta S_\text{system}=S_\text{final}-S_\text{initial}=S_2-S_1$\par 
+    Refer to Lecture 7 Page 21 for more information.
 
-    % Left off on Lecture 7 page 10
+     % ----- Power Cycles ----- %
+     \section*{Power Cycles}
+     \textbf{Ideal Cycle}: A cycle that resembles the actual cycle closely but is made up of totally internally reversible processes. These cycles are not necessarily externally reversible.
+    % Carnot Cycle
+    \subsection*{Carnot Cycle}
+    The Carnot Cycle is composed of 4 totally reversible processes: isothermal heat addition, isentropic expansion, isothermal heat rejection, and isentropic compression.\par 
+    For both ideal and actual cycles the thermal efficiency increases with an increase in the average temperature at which the heat is supplied to the system or with a decrease in the average temperature at which the heat is rejected from the system.\par 
+    \includegraphics[width=\linewidth]{Images/Carnot_Cucle.png}
+    % Air-Standard Assumptions
+    \subsection*{Air-Standard Assumptions}
+    \begin{itemize}
+        \item The working fluid is air which continuously circulates in a closed loop and always behaves as an ideal gas.
+        \item All the processses that make up the cycle are internally reversible.
+        \item The combustion process is replaced by a haet-addition process from an external source.
+        \item The exhaust process is replaced by a heat-rejection process that restores the working fluid to its initial state.
+    \end{itemize}
+    \textbf{Cold Air Standard Assumptions}: When the working fluid is considered to be air with constant specific heats at room temperature ($25^\circ$C)\par 
+    \textbf{Air Standard Cycle}: A cycle for which the air-standard assumptions are applicable.
+    % Reciprocating Engines
+    \subsection*{Reciprocating Engines}
+    \textbf{Compression Ratio}: $r=\frac{V_\text{max}}{V_\text{min}}=\frac{V_\text{BDC}}{V_\text{TDC}}$\par 
+    $W_\text{net}=\text{MEP}\times\text{Piston Area}\times\text{Stroke}=\text{MEP}\times\text{Displacement Volume}$\par 
+    \textbf{Mean Effective Pressure (MEP)}:\par 
+    $\text{MEP}=\frac{W_\text{net}}{V_\text{max}-V_\text{min}}=\frac{w_\text{net}}{v_\text{max}-v_\text{min}}$\par 
+    The engine with a larger MEP delivers more work per cycle and thus performs better.\par 
+    % The Otto Cycle
+    \subsection*{The Otto Cycle}
+    The ideal cycle for spark-ignition engines.\par 
+    \includegraphics[width=\linewidth]{Images/Otto_Cycle.png}\par
+    \includegraphics[width=\linewidth]{Images/Otto_Cycle2.png}\par
+    For air k=1.4 and the thermal efficiency of the Otto Cycle increases with the specific heat ratio, k, of the working fluid.\par
+    $(q_{in}-q_{out})+(w_{in}-w_{out})=u_{exit}-u_{inlet}$\par 
+    $q_{in}=u_3-u_2=c_v(T_3-T_2)$\par 
+    $q_{out}=u_4-u_1=c_v(T_4-T_1)$\par 
+    $\eta_\text{th,Otto}=\frac{w_\text{net}}{q_{in}=1-\frac{q_{out}}{q_{in}}}=1-\frac{T_4-T_1}{T_3-T_2}=1-\frac{T_1(T_4/T_1-1)}{T_2(T_3/T_2-1)}$\par 
+    $\frac{T_1}{T_2}=\left(\frac{v_2}{v_1}\right)^{k-1}=\left(\frac{v_3}{v_4}\right)^{k-1}=\frac{T_4}{T_3}$\par 
+    $r=\frac{V_\text{max}}{V_\text{min}}=\frac{V_1}{V_2}=\frac{v_1}{v_2}$\par 
+    Cold-Air Standard Assumption: $\eta_\text{th,Otto}=1-\frac{1}{r^k-1}$
+    % Diesel Cycle
+    \subsection*{Diesel Cycle}
+    The ideal cycle for the compression-ignition engines.\par 
+    \includegraphics[width=\linewidth]{Images/Diesel_Cycle.png}\par 
+    $q_{in}-w_{b,out}=u_3-u_2\rightarrow q_{in}=P_2(v_3-v_2)+(u_3-u_2)=h_3-h_2=c_p(T_3-T_1)$\par 
+    $-q_{out}=u_1-u_4\rightarrow q_{out}=u_4-u_1=c_v(T_4-T_1)$\par 
+    $\eta_\text{th,Diesel}=\frac{W_{net}}{q_{in}}=1-\frac{q_{out}}{q_{in}}=1-\frac{T_4-T_1}{k(T_3-T_2)}=1-\frac{T_1(T_4/T_1-1)}{kT_2(t_3/T_2-1)}$\par 
+    $r_c=\frac{V_3}{V_2}=\frac{v_3}{v_2}$\par 
+    $\eta_\text{th,Diesel}=1-\frac{1}{r^{k-1}}\left[\frac{r_c^k-1}{k(r_c-1)}\right]$
+    The thermal efficiency of the Diesel Cycle decreases as the cutoff ratio increases and increases as the compression ratio increases.
+    % Brayton Cycle
+    \subsection*{Brayton Cycle}
+    The ideal cycle for gas-turbine engines.\par 
+    \includegraphics[width=\linewidth]{Images/Brayton.png}\par 
+    \includegraphics[width=\linewidth]{Images/Brayton2.png}\par 
+    The thermal efficiency of the ideal Brayton Cycle increases as the pressure ratio increases.\par
+    $(q_{in}-q_{out})+(w_{in}-w_{out})=h_{exit}-h_{inlet}$\par 
+    $q_{in}=h_3-h_2=c_p(T_3-T_2)$\par 
+    $q_{out}=h_4-h_1=c_p(T_4-T_1)$\par 
+    $\eta_\text{th,Brayton}=\frac{w_{net}}{q_{in}}=1-\frac{q_{out}}{q_{in}}=1-\frac{c_p(T_4-T_1)}{c_p(T_3-T_2)}=1-\frac{T_1(T_4/T_1-1)}{T_2(T_3/T_2-1)}$\par 
+    $\frac{T_2}{T_1}=\left(\frac{P_2}{P_1}\right)^{(k-1)/k}=\left(\frac{P_3}{P_4}\right)^{(k-1)/k}=\frac{T_3}{T_4}$\par 
+    $r_p=\frac{P_2}{P_1}$ Pressure Ratio\par
+    Only for ideal cycle and cold-air standard assumptions: $\eta_\text{th,Brayton}=1-\frac{1}{r_p^{(k-1)/k}}$
+    % Development of Gas Turbines
+    \subsection*{Development of Gas Turbines}
+    \begin{itemize}
+        \item Increasing the turbine inlet (or firing) temperatures
+        \item Increasing the efficiencies of turbomachinery components (turbins, compressors)
+        \item Adding modification to the basic cycle (intercooling, regeneration or recuperation, and reheating)
+    \end{itemize}
+    \textbf{Deviation of Actual Gas-Turbine Cycles from Idealized Ones}:\par
+    \includegraphics[width=0.5\linewidth]{Images/non_ideal_cycles.png}\par 
+    Irreversibilities in turbine and compressors, pressure drops, heat losses.\par 
+    Isentropic efficiencies of the compressor and turbine:\par 
+    $\eta_C=\frac{w_s}{w_a}=\frac{h_{2s}-h_1}{h_{2a}-h_1}$ and $\eta_T=\frac{w_a}{w_s}=\frac{h_3-h_{4a}}{h_3-h_{4s}}$\par 
+    % Brayton Cycle with Regeneration
+    \subsection*{Brayton Cycle with Regeneration}
+    \includegraphics[width=\linewidth]{Images/Brayton_regen.png}
 
-    % General Knowledge
+    % Left off on Lecture 11 page 12
+
+    % ----- General Knowledge ----- %
     \section*{General Knowledge}
     \textbf{Isentropic}: Constant entropy\par 
     \textbf{Isothermal}: Constant temperature\par 
