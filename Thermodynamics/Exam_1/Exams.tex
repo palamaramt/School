@@ -299,9 +299,86 @@
     $\eta_C=\frac{w_s}{w_a}=\frac{h_{2s}-h_1}{h_{2a}-h_1}$ and $\eta_T=\frac{w_a}{w_s}=\frac{h_3-h_{4a}}{h_3-h_{4s}}$\par 
     % Brayton Cycle with Regeneration
     \subsection*{Brayton Cycle with Regeneration}
-    \includegraphics[width=\linewidth]{Images/Brayton_regen.png}
+    \includegraphics[width=\linewidth]{Images/Brayton_regen.png}\par 
+    $q_\text{regen,act}=h_5-h_2$\par 
+    $q_\text{regen,max}=h_{5'}-h_2=h_4-h_2$\par 
+    Effectiveness of regenerator: $\epsilon=\frac{q_\text{regen,act}}{q_\text{regen,max}}=\frac{h_5-h_2}{h_4-h_2}$\par 
+    Effectiveness under cold-air assumptions: $\epsilon=\frac{T_5-T_2}{T_4-T_2}$\par 
+    Efficiency under cold-air assumptions:\par $\eta_\text{th,regen}=1-\left(\frac{T_1}{T_3}\right)(r_p)^{(k-1)/k}$\par
+    \includegraphics[width=0.5\linewidth]{Images/regen.png}
+    % Carnot Vapor Cycle
+    \subsection*{Carnot Vapor Cycle}
+    \includegraphics[width=\linewidth]{Images/carnot_vapor.png}
+    % Rankine Cycle
+    \subsection*{Rankine Cycle}
+    The ideal cycle for vapor power cycles.\par
+    \includegraphics[width=\linewidth]{Images/Rankine_Cycle.png}\par 
+    Steady-flow energy equation:\par 
+    $(q_{in}-q_{out})+(w_{in}-w_{out})=h_e-h_i$ (kJ/kg)\par 
+    \textbf{Pump}(q=0):\par 
+    $w_\text{pump,in}=h_2-h_1=V(P_2-P_1)$\par 
+    $h_1=h_{f@P_1}$ and $v=v_1=v_{f@P_1}$\par 
+    \textbf{Boiler}(w=0):\par $q_{in}=h_3-h_2$\par 
+    \textbf{Turbine}(q=0):\par $w_\text{turb,out}=h_3-h_4$\par 
+    \textbf{Condenser}(w=0):\par $q_{out}=h_4-h_1$\par 
+    \textbf{Finally}:\par 
+    $w_{net}=q_{in}-q_{out}=w_\text{turb,out}-w_\text{pump,in}$\par 
+    $\eta_{th}=\frac{w_{net}}{q_{in}}=1-\frac{q_{out}}{q_{in}}$\par 
+    The efficiency of power plants in the US is often expressed in terms of \textbf{heat rate} which is the amount of heat supplied, in Btu's, to generate 1 kWh of electricity: $\eta_{th}=\frac{3412\text{(Btu/kWh)}}{\text{Heat rate (Btu/kWh)}}$
+    % Deviation of Actual Vapor Power Cycle from Idealized Ones
+    \subsection*{Deviation of Actual Vapor Power Cycle from Idealized Ones}
+    \includegraphics[width=\linewidth]{Images/non_deal_vapor.png}
+    % How Increase Efficiency of Rankine Cycle?
+    \subsection*{How Increase Efficiency of Rankine Cycle?}
+    Look at Lecture 12 starting Page 7 for diagrams.\par
+    \textbf{Lowering the Condenser}: Lowers $T_{\text{low,avg}}$, however, it increases the moisture content of the steam at the final stages of the turbine.\par 
+    \textbf{Superheating the Steam to High Temperatures}: increases $T_\text{high,avg}$ and decreases the moisture content at the turbine exit (desirable), however it is limited by metallurgical considerations. Highest temp at inlet is 620$^\circ$.\par 
+    \textbf{Increasing the Boiler Pressure}: increases $T_\text{high,avg}$ however the moisture content of the steam at the turbine exit increases - can be corrected by reheating the steam.
+    % The Ideal Reheat Rankine Cycle
+    \subsection*{The Ideal Reheat Rankine Cycle}
+    \includegraphics[width=\linewidth]{Images/reheat_rankine.png}
+    % Refrigerators and Heat Pumps
+    \subsection*{Refrigerators and Heat Pumps}
+    \includegraphics[width=\linewidth]{Images/refrigerators_HP.png}
+    % Reversed Carnot Cycle
+    \subsection*{Reversed Carnot Cycle}
+    \includegraphics[width=\linewidth]{Images/reverse_carnot.png}
+    % Ideal Vapor-Compression Refrigeration Cycle
+    \subsection*{Ideal Vapor Compression Refrigeration Cycle}
+    \includegraphics[width=\linewidth]{Images/vcr.png}
 
-    % Left off on Lecture 11 page 12
+    % ----- Mechanisms of Heat Transfer ----- %
+    \section*{Mechanisms of Heat Transfer}
+    % Conduction
+    \subsection*{Conduction}
+    The transfer of energy from the more energetic particles of a substance to the adjacent less energetic ones as a result of interactions between the particles.\par 
+    Rate of heat conduction $\propto \frac{\text{(Area)(Temperature Difference)}}{\text{Temperature Difference}}$\par 
+    $\dot{Q}_\text{cond}=kA\frac{T_1-T_2}{\Delta x}=-kA\frac{\Delta T}{\Delta x}$ (W)\par 
+    When $x\rightarrow 0$, $\dot{Q}_\text{cond}=-kA\frac{dT}{dx}$\par 
+    \textbf{Thermal Conductivity}: $k$, a measure of the ability of a material to conduct heat.\par 
+    \textbf{Temperature Gradient}: $dT/dx$, the slope of the temperature curve on a T-x diagram.
+    % Thermal Diffusivity
+    \subsection*{Thermal Diffusivity}
+    \textbf{Specific Heat}: $c_p$ (J/kgC), heat capacity per unit mass.\par 
+    \textbf{Heat Capacity}: $\rho c_p$ (J/m$^3$), heat capacity per unit volume.\par 
+    \textbf{Thermal Diffusivity}: $\alpha$ (m$^2$/s), represents how fast heat diffuses through a material.\par 
+    $\alpha = \frac{\text{Heat Conduction}}{\text{Heat Storage}}=\frac{k}{\rho c_p}$\par 
+    The larger the thermal diffusivity the faster the propogation of heat into the medium.
+    % Convection
+    \subsection*{Convection}
+    The mode of energy transfer between a solid surface and the adjacent liquid or gas that is in motion, and it involves the combined effects of conduction and fluid motion.\par 
+    $\dot{Q}_\text{conv}=hA_s(T_2-T_\infty)$ where $h$ is the convection heat transfer coefficient in W/m$^2$K
+    % Radiation
+    \subsection*{Radiation}
+    The energy emitted by matter in the form of electromagnetic waves as a result of the changes in the electronic configurations of the atoms or molecules.\par 
+    $\dot{Q}_\text{emit,max}=\sigma A_sT_s^4$ where $\sigma = 5.670\times 10^{-8}$ W/m$^2$K$^4$ or $0.1714\times 10^{-8}$ Btu/hft$^2$R$^4$\par 
+    The idealized surface that emits radiation at this maximum rate is called a blackbody. The radiation for all real surfaces is as:\par 
+    $\dot{Q}_\text{emit}=\varepsilon\sigma A_2T_s^4$ (W) where $\varepsilon$ is the emissivity of the surface. $\alpha$ is the absorptivity of the surface.\par 
+    $\dot{Q}_\text{absorbed}=\alpha\dot{Q}_\text{incident}$\par 
+    $\dot{Q}_\text{rad}=\varepsilon\sigma A_s(Ts^4-T_\text{surr}^4)$ (W)\par 
+    Convection and Radiation often take place in parallel:\par 
+    $\dot{Q}_\text{total}=\dot{Q}_\text{conv}+\dot{Q}_\text{rad}=h_\text{combined}A_s(T_s-T_\infty)$\par 
+    $h_\text{combined}=h_\text{conv}+h_\text{rad}=h_\text{conv}+\varepsilon\sigma(T_s+T_\text{surr})(T_s^2+T_\text{surr}^2)$
 
     % ----- General Knowledge ----- %
     \section*{General Knowledge}
